@@ -1,0 +1,72 @@
+
+
+<?php 
+            if (isset($_SESSION['en'])) //Check if the User Logging in is an entrepreneur
+              { 
+                 echo '<ul>
+              				<h5>Logged in as an Entrepreneur<h5/>
+		                  <h3 id="menu-header">Quick Links</h3>
+		                  <a href="index.php?q=pdetails" ><li>View Your Details</li></a>
+		                  <a href="index.php?q=update-pdetails" ><li>Edit Personal Details</li></a>
+		                  <a href="index.php?q=viewm" ><li>View Markets</li></a>		
+	                  </ul>';
+	                
+					}
+					
+	
+              elseif (isset($_SESSION['ma'])) //Check if the User Logging in is a Market Supervisor
+               {   
+							            
+               echo '<ul>               			
+               			<h5>Logged in as a Market Supervisor<h5/>
+		                  <h3 id="menu-header">Quick Links</h3>
+		                  <a href="index.php?q=viewm"  ><li>register enterpreneur</li></a>
+		                  <a href="index.php?q=entlist" ><li>enterpreneur list</li></a>	
+		                  <a href="index.php?q=entp_search" ><li>Make payments</li></a>	
+		                  <a href="index.php?q=newspost" ><li>Post News</li></a>	
+		                  <a href="index.php?q=reportma" ><li>Market Payment Report</li></a>	
+		                </ul>';
+
+               }
+              elseif (isset($_SESSION['da'])) //Check if the User Logging in is a District Supervisor
+               {   echo '<ul>
+               			<h5>Logged in as a District Supervisor<h5/>
+		                  <h3 id="menu-header">Quick Links</h3>
+		                  <a href="index.php?q=registerm" ><li>Register Market</li></a>	
+		                  <a href="index.php?q=register-ma" ><li>Register Market SuperVisor</li></a>	
+		                  
+						  					  
+	                  </ul>';
+			   
+			   }
+             elseif (isset($_SESSION['ra'])) //Check if the User Logging in is a Region Supervisor
+               {  echo '<ul>
+               			<h5>Logged in as a Region Supervisor<h5/>
+		                  <h3 id="menu-header">Quick Links</h3>
+		                  <a href="index.php?q=register-da" ><li>Register District SuperVisor</li></a>	
+		                  	                 						  
+						  
+	                  </ul>';
+			   
+			   } 
+			   
+			   
+			   
+			   elseif (isset($_SESSION['ad'])) //Check if the User Logging in is a Region Supervisor
+               {  echo '<ul>
+               			<h5>Logged in as administrator<h5/>
+		                  <h3 id="menu-header">Quick Links</h3>
+		                  <a href="index.php?q=register-ra" ><li>Register Region SuperVisor</li></a>	
+		                  <a href="index.php?q=paid" ><li>View Payment report</li></a>			
+						  
+	                  </ul>';
+			   
+			   } 
+	         else 
+			 {  echo '<ul>
+			 				<h5>You are not Logged in<h5/>
+		               <h3 id="menu-header">Quick Links</h3>
+		               <a href="index.php?q=viewm" ><li>Get Registered</li></a>	
+		              </ul>';	
+	          } 
+?>

@@ -1,0 +1,27 @@
+#post {
+		width: 600px;
+		height: 150px;
+		font-family: sans-serif;
+		font-size: 16px;
+		border: 1px solid #000;
+		border-radius: 4px;	
+	
+	}
+	
+	
+	#tittle {
+		width: 600px;
+		height: 50px;
+		font-family: sans-serif;
+		font-size: 14px;	
+		font-weight: bold;
+	}
+	
+	td h4 {
+			margin-top: 0px;		
+		
+		
+		}
+	
+	
+	

@@ -1,0 +1,12 @@
+http://stackoverflow.com/questions/18944318/how-get-value-from-url
+
+
+http://stackoverflow.com/questions/22465623/auto-refresh-mysql-query-results-in-php
+
+http://www.hotscripts.com/forums/php/45011-solved-after-login-dont-let-user-click-go-back-button-browser.html
+
+http://www.tizag.com/mysqlTutorial/mysqlsum.php
+
+http://forums.asp.net/t/1483828.aspx?Prevent+user+from+going+back+to+data+after+logging+out
+
+http://www.w3schools.com/sql/sql_func_sum.asp

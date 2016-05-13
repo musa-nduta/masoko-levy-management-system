@@ -1,0 +1,25 @@
+<link rel="stylesheet" type="text/css" href="template/styles/layout.css">
+
+<?php
+
+if(isset($_SESSION['id'])){?>
+				<ul id="menu-list">
+							<li><a href="index.php">HOME</li></a>
+							<li><a href="index.php?q=viewm">MARKETS</li></a>
+							<li><a href="index.php?q=news_disp">NEWS</li></a>
+							<li><a href="index.php?q=logout">LOGOUT</li></a>
+							
+				</ul>
+<?php	}
+			else {
+		?>
+
+<ul id="menu-list">
+							<li><a href="index.php">HOME</li></a>
+							<li><a href="index.php?q=viewm">MARKETS</li></a>
+							<li><a href="index.php?q=news_disp">NEWS</li></a> 
+							<li><a href="index.php?q=login">LOGIN</li></a>
+							
+				</ul>
+
+<?php } ?>
