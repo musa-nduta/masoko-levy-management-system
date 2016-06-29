@@ -36,13 +36,15 @@ $sql="SELECT fname, mname, sname, gender, dob, mstatus,
 		  			$pobox_upd = $_POST['pobox'];
 		  			$phone_upd = $_POST['phone'];
 		  			$email_upd = $_POST['email'];
+		  			$mstatus_upd = $_POST['mstatus'];
 
 		          $query="UPDATE entrepreneurs
                               set
                                     street = '$street_upd',
                                     pobox = '$pobox_upd',
                                     phone = '$phone_upd',
-                                    email = '$email_upd'
+                                    email = '$email_upd',
+                                    mstatus = '$mstatus_upd'
                         WHERE
                                     entrepreneurs.id = '$id'";
 

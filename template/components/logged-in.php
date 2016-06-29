@@ -26,8 +26,8 @@ if (isset($_SESSION['en'])){ //Check if the User Logging in is an entrepreneur ?
              href="#" 
              class="dropdown-toggle" 
              data-toggle="dropdown">
-                <?php echo "<strong>".$fname." ".$sname." </strong>"; ?>
-              <span class="glyphicon glyphicon-user pull-left"></span>
+                <?php echo "<strong>".$fname." ".$sname."</strong>"; ?>
+              <span class="glyphicon glyphicon-user pull-right"></span>
             </a>
             
         <ul class="dropdown-menu">

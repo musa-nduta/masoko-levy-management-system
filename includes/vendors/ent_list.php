@@ -14,8 +14,8 @@
 
 
 
- $sql="SELECT id, fname, sname, street, slot, paid, flag  FROM entrepreneurs where market_id = '".$mid."'";
- $results=mysql_query($sql);
+ $sql="SELECT id, fname, sname, street, slot, flag  FROM entrepreneurs where market_id = '".$mid."'";
+ $ent_results=mysql_query($sql);
 ?>
 
 
@@ -37,22 +37,20 @@
     <th>Last Name</th>
     <th>Street</th>
     <th>Slot</th>
-    <th>Amount Paid</th>
     <th>Status</th>
 </tr>
 
 <?php
-  if(mysql_num_rows($results)>0)
+  if(mysql_num_rows($ent_results)>0)
       {
-        //display markets
-		while($rows=mysql_fetch_assoc($results))
+        //display list of vendors
+		while($rows=mysql_fetch_assoc($ent_results))
 		  { ?>
           <td><input type="checkbox" name="activation[]" value="<?php echo $rows['id']; ?>"></td><?php echo "
                 <td><a href='index.php?q=entpdetails&id=".$rows['id']."'>".$rows['fname']."</a></td>
                 <td>".$rows['sname']."</td>
                 <td>".$rows['street']."</td>
 				<td>".$rows['slot']."</td>
-                <td>".$rows['paid']."</td>
                 <td>".$rows['flag']."</td></td></tr>";
 				}
 }else{ echo "<tr class='danger'><td>Sorry, no Vendors found</td></tr>";	}

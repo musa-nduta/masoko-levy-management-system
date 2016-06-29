@@ -1,5 +1,12 @@
 <link rel="stylesheet" type="text/css" href="css/includes_styles.css" />
 
+<head>
+<script type="text/javascript" src="js/forms.js"></script>
+<script type="text/javascript" src="js/phone.js"></script>
+<script type="text/javascript" src="js/number.js"></script>
+</head>
+
+
 <?php
 //A function to check if a user is login, otherwise they will be directed to the login page.
 checklogin();
@@ -50,7 +57,7 @@ $sql="SELECT fname, mname, sname, gender, dob, mstatus, street, pobox, phone, em
 	  <div class="col-md-4">
 	  <div class="radio">
 	    <label for="radios-0">
-	      <input type="radio" name="mstatus"  value="single">
+	      <input type="radio" name="mstatus"  value="single" required="required">
 	      Single
 	    </label>
 		</div>
@@ -81,15 +88,15 @@ $sql="SELECT fname, mname, sname, gender, dob, mstatus, street, pobox, phone, em
 
 
 	<div class="form-group">
-	  <label class="col-md-4 control-label" for="pobox">P.O BOX</label>
+	  <label class="col-md-4 control-label" for="upd_pobox">P.O BOX</label>
 	  <div class="col-md-4">
-	  <input id="pobox" name="pobox" type="text" class="form-control input-md"  value="<?php echo $pobox; ?>">
+	  <input id="upd_pobox" name="upd_pobox" type="text" class="form-control input-md" required="required"  value="<?php echo $pobox; ?>">
 
 	  </div>
 	</div>
 
 	<div class="form-group">
-	  <label class="col-md-4 control-label" for="box">E-Mail</label>
+	  <label class="col-md-4 control-label" for="email">E-Mail</label>
 	  <div class="col-md-4">
 	  <input id="email" name="email" type="email" class="form-control input-md" value="<?php echo $email; ?>" required="">
 
@@ -102,8 +109,7 @@ $sql="SELECT fname, mname, sname, gender, dob, mstatus, street, pobox, phone, em
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for="phone">Phone Number</label>
 	  <div class="col-md-4">
-	  <input type="text" name="phone" id="phone" class="input-medium bfh-phone form-control input-md" value="<?php echo $phone; ?>"
-														data-format="+255-(ddd) ddd ddd" required="">
+	  <input type="text" name="phone" id="phone" class="input-medium bfh-phone form-control input-md" value="<?php echo $phone; ?>"data-format="+255-(ddd) ddd ddd" required="required">
 
 	  </div>
 	</div>
@@ -112,13 +118,13 @@ $sql="SELECT fname, mname, sname, gender, dob, mstatus, street, pobox, phone, em
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for="street">Street</label>
 	  <div class="col-md-4">
-	  <input type="text" name="street" id="street" class="form-control input-md" value="<?php echo $street; ?>">
+	  <input type="text" name="street" id="street" class="form-control input-md" value="<?php echo $street; ?>" required="required">
 
 	  </div>
 	</div>
 
 
 
-<input type="submit" name="update" value="UPDATE">
+<input class=btn-default type="submit" name="update" value="UPDATE">
 
 </form>

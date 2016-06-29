@@ -3,6 +3,7 @@
 if((isset($_SESSION['en'])) and (isset($_SESSION['id']))){?>
 <ul class="nav navbar-nav">
 	<li class="active"><a href="index.php"><div class="glyphicon glyphicon-home"></div></a></li>
+	<li><a href="index.php?q=vendor-dashboard">DASHBOARD</a></li>
 	<li><a href="index.php?q=viewm">MARKETS</a></li>
 	<li><a href="index.php?q=news_disp">NEWS</a></li>
 </ul>
@@ -18,7 +19,7 @@ if((isset($_SESSION['en'])) and (isset($_SESSION['id']))){?>
 <ul class="nav navbar-nav">
 	<li class="active"><a href="index.php"><div class="glyphicon glyphicon-home"></div></a></li>
 	<li><a href="index.php?q=viewm">MARKETS</a></li>
-	<li><a href="index.php?q=panel">ADMINISTRATION</a></li>
+	<li><a href="index.php?q=market_supervisor_dashboard">DASHBOARD</a></li>
 	<li><a href="index.php?q=news_disp">NEWS</a></li>
 </ul>
 

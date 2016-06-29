@@ -24,9 +24,10 @@
 				//Valid user				
 				$row = mysql_fetch_assoc($ma);
 				$_SESSION['id'] = $row['id'];
-				$_SESSION['ma'] = $row['id'];
+				$_SESSION['ma'] = $row['username'];
+                session_start($_SESSION['ma']);
 				
-                header("Location: index.php");
+                header("Location: index.php?q=market_supervisor_dashboard");
 				}
 				
 				
@@ -44,7 +45,7 @@
 				$row = mysql_fetch_assoc($en);
 				$_SESSION['id'] = $row['id'];
 				$_SESSION['en'] = $row['id'];
-				header("Location: index.php");
+				header("Location: index.php?q=vendor-dashboard");
 				}
         
             else { 

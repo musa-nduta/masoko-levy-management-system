@@ -3,6 +3,7 @@
 
     <link rel="stylesheet" type="text/css" href="template/styles/layout.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrapValidator.css" rel="stylesheet">
 <!--End of Styles-->
 
 
@@ -17,6 +18,8 @@
     <!--Scrpts-->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrapValidator.js"></script>
+    
 
     <!--End of Scripts-->
 
@@ -24,9 +27,7 @@
 <body>
 
 <div class="container">
-<div class="header">
-<?php  //require "template/components/header.php"; ?>
-</div>
+
 
 
 <!--*******************************************************************
@@ -44,7 +45,7 @@
           <a class="navbar-brand" href="index.php">Masoko Levy MS</a>
       </div>
       <div class="navbar-collapse collapse">
-            <?php  require "template/components/menu.php"; ?>
+            <?php require "template/components/menu.php"; ?>
       </div>
 
   </nav>

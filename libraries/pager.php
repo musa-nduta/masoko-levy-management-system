@@ -1,7 +1,7 @@
 <?php
 
 $q = (isset($_GET['q']))? $_GET['q'] : '';
-$id = (isset($_GET['id']))? $_GET['id'] : '';
+//$id = (isset($_GET['id']))? $_GET['id'] : '';
 
 
 
@@ -46,9 +46,17 @@ switch($q){
 	case 'pdetails':
 				$content="includes/vendors/personal_details.php";
 				break;
+        
+    case 'vendor-dashboard':
+				$content="template/components/dashboards/vendors/vendor_dashboard.php";
+				break;
 
         case 'payments':
 				$content="includes/vendors/payment.php";
+				break;
+        
+        case 'proc_payments':
+				$content="includes/vendors/proc_payment.php";
 				break;
 						
 		case 'process-upd':
@@ -113,10 +121,6 @@ switch($q){
 				$name="includes/vendors/names.php";
 				break;
 
-        case 'reports':
-				$content="includes/markets/market_reports.php";
-				break;
-
         case 'passwd_reset':
 				$content="includes/password_reset.php";
 				break;
@@ -130,6 +134,44 @@ switch($q){
 				break;
         case 'changePass':
 				$content="includes/vendors/changePassword.php";
+				break;
+        
+        case 'afterpay':
+				$content="includes/vendors/after_pay.php";
+				break;
+        
+        case 'market_supervisor_dashboard':
+                $content="template/components/dashboards/market_supervisor/market_supervisor_dashboard.php";
+				break;
+        
+        
+//        Deactivation Requests
+        case 'deactivates':
+				$content="includes/market_supervisors/deactivation_requests.php";
+				break;
+        
+//        Deactivation Requests
+        case 'deactivations':
+				$content="includes/vendors/deactivation.php";
+				break;
+        
+        
+//        Reporting
+
+        case 'vendor-payment-report':
+				$content="includes/reports/vendors/payments.php";
+				break;
+        
+        case 'reports':
+				$content="includes/reports/markets/reports.php";
+				break;
+    
+        case 'monthly_pay':
+				$content="includes/reports/payments/payments_in_a_month.php";
+				break;
+        
+        case 'monthly_printable':
+				$content="includes/reports/payments/monthly_printable.php";
 				break;
 
 

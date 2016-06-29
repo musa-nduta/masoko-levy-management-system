@@ -1,88 +1,36 @@
-'use strict'
+var data = [100, 150, 200];
+var r = 70;
 
-$(function (){
+var color = d3.scale.ordinal()
+    .range(["red", "blue", "orange"]);
 
-var data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 86, 27, 90]
-        }
-    ]
-};
-    
-var options = {
+var canvas = d3.selectAll("body").append("svg")
+    .attr("width", 1000)
+    .attr("height", 1000);
 
-    ///Boolean - Whether grid lines are shown across the chart
-    scaleShowGridLines : true,
+var group = canvas.append("g")
+    .attr("transform", "translate(300, 300)");
 
-    //String - Colour of the grid lines
-    scaleGridLineColor : "rgba(0,0,0,.05)",
+var arc = d3.svg.arc()
+    .innerRadius(150)
+    .outerRadius(r);
 
-    //Number - Width of the grid lines
-    scaleGridLineWidth : 1,
+var pie = d3.layout.pie()
+    .value(function (d){return d; });
 
-    //Boolean - Whether to show horizontal lines (except X axis)
-    scaleShowHorizontalLines: true,
+var arcs = group.selectAll(".arc")
+    .data(pie(data))
+    .enter()
+    .append("g")
+    .attr("class", "arc");
 
-    //Boolean - Whether to show vertical lines (except Y axis)
-    scaleShowVerticalLines: true,
+arcs.append("path")
+    .attr("d", arc)
+    .attr("fill", function (d){ return color(d.data); });
 
-    //Boolean - Whether the line is curved between points
-    bezierCurve : true,
-
-    //Number - Tension of the bezier curve between points
-    bezierCurveTension : 0.4,
-
-    //Boolean - Whether to show a dot for each point
-    pointDot : true,
-
-    //Number - Radius of each point dot in pixels
-    pointDotRadius : 4,
-
-    //Number - Pixel width of point dot stroke
-    pointDotStrokeWidth : 1,
-
-    //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-    pointHitDetectionRadius : 20,
-
-    //Boolean - Whether to show a stroke for datasets
-    datasetStroke : true,
-
-    //Number - Pixel width of dataset stroke
-    datasetStrokeWidth : 2,
-
-    //Boolean - Whether to fill the dataset with a colour
-    datasetFill : true,
-
-    //String - A legend template
-    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
-};
-
-// Get the context of the canvas element we want to select
-var ctx = document.getElementById("myChart").getContext("2d");
-var myNewChart = new Chart(ctx).PolarArea(data);
-
-// This will get the first returned node in the jQuery collection.
-var myNewChart = new Chart(ctx).Line(data, options);
-    
-    
-});
+arcs.append("text")
+    .attr("transform", function(d){ return "translate("+arc.centroid(d) + ")"; })
+    .text(function(d){return d.data; })
+    .attr("text-anchor", "middle")
+    .attr("font-size", "2em")
+    .attr("font-weight", "bolder");

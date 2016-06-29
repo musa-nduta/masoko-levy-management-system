@@ -1,9 +1,49 @@
 
 // Form validation code will come here.
+
+
+//A function to confirm passwords if they match
+function passMatch()
+{
+	var confpassword = document.getElementById("confpassword").value; 
+	var password = document.getElementById("password").value;
+
+
+	if(password.length<8){
+        document.getElementById("pass_error").innerHTML = "Your Password Must more than 8 characters.";
+            return false;
+                }else{
+                        if(password!=confpassword){
+		                      document.getElementById("pass_error").innerHTML = "passwords does not match.";
+	            }else{
+		          document.getElementById("pass_error").innerHTML = "Now they match.";		
+	}	
+}
+}
+
+
+function dobMachine(){
+    var dob = document.forms["registration"]["dob"].value;
+    var year_dob = moment(dob).format("YYYY");
+    var today = moment().format("YYYY");
+    var age = today-year_dob;
+    
+    if(age<19){
+    document.getElementById("age_error").innerHTML = "You are below 18 years of age, so we can't register you into our system.";
+     document.getElementById("dob").focus();
+        return false;
+    }else if(age>19){
+        document.getElementById("age_error").innerHTML = "Ok you can now continue!";
+    }
+   
+}
+
+
 function validate()
 {
  	
-	var fname = document.forms["registration"]["fname"].value; 
+	var fname = document.forms["registration"]["fname"].value;
+	var pobox = document.forms["registration"]["upd_pobox"].value;  
 	var mname = document.forms["registration"]["mname"].value; 
 	var sname = document.forms["registration"]["sname"].value; 
 	var district = document.forms["registration"]["district"].value; 
@@ -25,6 +65,12 @@ function validate()
      return false;
    }
    
+if( pobox =="")
+   {
+     alert( "Please enter your Postal Address!" );
+     document.updatepdetails.upd_pobox.focus() ;
+     return false;
+   }
    
    if( mname =="")
    {

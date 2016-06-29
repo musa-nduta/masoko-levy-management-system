@@ -7,8 +7,18 @@ $id = $_SESSION['id'];
 
 
 //Selecting the information from the database to be displayed in the profile
- $sql="SELECT fname, mname, sname, gender, dob, mstatus,	street, pobox, phone, email, market_id, slot, paid
+ $sql="SELECT fname, mname, sname, gender, dob, mstatus,	street, pobox, phone, email, market_id, slot
  				FROM entrepreneurs where id = '$id'";
+
+
+$total_paid = "SELECT SUM(amount_paid) as total
+                            FROM payments
+                            WHERE payer_id = '$id'" or die(mysql_error);
+            $total_rows = mysql_fetch_assoc(mysql_query($total_paid));
+            $paid = $total_rows['total'];
+
+
+
 
 
 //execute query
@@ -19,7 +29,8 @@ $results=mysql_query($sql);
     <ul id="myTab" class="nav nav-tabs">
         <li class="active"><a href="#details" data-toggle="tab">Personal Details</a></li>
         <li><a href="#password" data-toggle="tab">Change Password</a></li>
-        <li><a href="#deactivate" data-toggle="tab">Deactivate Account</a></li>
+        <li><a href="#deactivate" data-toggle="tab">Request Account Deactivation</a></li>
+        <li><a href="#update" data-toggle="tab">Update Details</a></li>
     </ul>
 
     <!--Tab Contents-->
@@ -153,7 +164,7 @@ $results=mysql_query($sql);
                                 <?php	echo "Amount Paid so far: "; ?>
                             </td>
                             <td>
-                                <?php echo $rows['paid']; ?>
+                                <?php echo $paid; ?>
                             </td>
                         </tr>
 
@@ -198,27 +209,56 @@ $results=mysql_query($sql);
             </form>
 
         <div class="tab-pane fade in" style="margin-top: 2em" id="deactivate">
-
-            <div class="alert alert-danger">
+        
+        <div class="panel-body">
+                   
+        <form class="form-horizontal" name="activate" role="form" action="index.php?q=account" method="POST">
+            <div class="form-group">
+            
+                
+                <div class="alert alert-danger">
                 <div class="glyphicon glyphicon-alert"></div>
-                <strong>You should be careful!</strong>
-                <p>If you deactivate your account you wont be able to login into the Masoko Levy Management System</p>
+                <strong>Hello!</strong>
+                <p>We are sorry to hear that you want to leave, the Supervisor will contact you soon for clearances. </p>
+            </div>
+                
+                
+                
+                <label class="col-md-4 control-label" for="reason">Reason: </label>
+                <div class="col-md-8">
+                    <textarea class="form-control" id="reason" name="reason" ></textarea>
+                </div>
+            </div>
+            
+        
+            
+
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-8">
+                <input type="checkbox" name="agreed">
+                <strong>I would like to ask for a deactivation. </strong>
             </div>
 
-            <form name="activate" role="form" action="index.php?q=account" method="POST">
-                <input type="checkbox" name="agreed">
-                <strong>I understand, let me Deactivate my Account. </strong>
-                <br>
-                <br>
-
-
-                <input type="submit" name="submit">
-
+            <br><br>
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-8">
+                <input class="btn btn-success" type="submit" name="submit" value="Send Request">
+            </div>
 
             </form>
 
         </div>
-    </div>
+        </div>
+        
+        
+        <div class="tab-pane fade in" style="margin-top: 3em" id="update">
+            <?php require("includes/vendors/update_personal_details.php"); ?>
+        </div>
+
+</div>
+
+
+
 
     <?php
           }

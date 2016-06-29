@@ -10,15 +10,17 @@
     $payer_id = $_SESSION['id'];
     $pay_date = date("Y-m-d");
     $amount_paid = $_POST['amount'];
+    $month_paid_for = $_POST['pay_month'];
+    $year_paid_for = $_POST['pay_year'];
     $receipt_number = $_POST['receipt_number'];
     $receipt_file =upload('receipt',"images/masoko/");
 
         $payment_query = "INSERT INTO payments
-                                                                    (payer_id, pay_date, amount_paid, receipt_number, receipt_file)
-                                            VALUES ('$payer_id','$pay_date', '$amount_paid', '$receipt_number',  '$receipt_file')";
+                        (payer_id, pay_date, amount_paid, receipt_number, receipt_file, month_paid_for, year_paid_for)
+                        VALUES ('$payer_id','$pay_date', '$amount_paid', '$receipt_number',  '$receipt_file', $month_paid_for, $year_paid_for)";
 
                 if(mysql_query($payment_query)){
-                        echo "<h2>Thank you for paying a Levy. </h2>";
+                       header("Location: index.php?q=afterpay");
                 }else {
                         echo "<h2>There is a problem, please contact you market supervisor. </h2>";
                 }
@@ -37,16 +39,16 @@ $get_payments = "SELECT payments.payer_id, entrepreneurs.id, payments.pay_date, 
 
 <div class="well">
   <div class="jumbotron">
-    <h1 style="font-style: italic; color: #0aa; font-weight: bolder;">Pay Here!</h1>
-    <p style="margin-left:20px; color: #f07; font-size: 2em;">Please be careful when filling the form</p>
+    <h1 style="font-weight: bolder;">Pay Here!</h1>
+    <p style="margin-left:20px; font-size: 2em;">Please be careful when filling the monthly payment form</p>
   </div>
 
 
-<form class="form-horizontal" name="payment" role="form" action="index.php?q=payments" method="POST" enctype="multipart/form-data">
+<form class="form-horizontal" name="payment" role="form" action="" method="POST" enctype="multipart/form-data">
     <div class="form-group">
-          <label class="col-md-4 control-label" for="amount">Amount</label>
+          <label class="col-md-8 control-label" for="amount">Amount: 200 per day = 6000 per month</label>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="amount" placeholder="Amount in Tshs" data-validation="[NOTEMPTY]">
+            <input type="hidden" class="form-control" name="amount" value="6000" placeholder="Amount in Tshs" data-validation="[NOTEMPTY]">
         </div>
     </div>
 
@@ -70,20 +72,20 @@ $get_payments = "SELECT payments.payer_id, entrepreneurs.id, payments.pay_date, 
     </div>
 
           <div class="form-group">
-                <label class="col-md-4 control-label" for="pay_month">Payments for the month of: </label>
+                <label class="col-md-4 control-label" for="pay_month">Select month to pay for: </label>
                 <select class="col-md-6" name="pay_month">
-                    <option>January</option>
-                    <option>February</option>
-                    <option>March</option>
-                    <option>April</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>August</option>
-                    <option>September</option>
-                    <option>October</option>
-                    <option>November</option>
-                    <option>December</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
                 </select>
           </div>
 
@@ -93,8 +95,8 @@ $get_payments = "SELECT payments.payer_id, entrepreneurs.id, payments.pay_date, 
                 <select class="col-md-6" name="pay_year">
 
 <!-- Generating number of years -->
-                  <?php $year = 2000;
-                        while($year<=2020 && $year>=2000 )
+                  <?php $year=2016;
+                        while($year>=2016 && $year<=2100)
                         {  ?>
                     <option>
                             <?php echo $year; ?>
@@ -127,39 +129,4 @@ $get_payments = "SELECT payments.payer_id, entrepreneurs.id, payments.pay_date, 
 
 </div>
 
-<div class="row">
-        <table class="table table-striped">
-        <tr>
-                <th>Payment Number</th>
-                <th>Amount Paid</th>
-                <th>Receipt number</th>
-                <th>Receipt File</th>
-        </rt>
 
-        <?php
-        // $results = mysql_query($get_payments);
-        if(mysql_num_rows($results)>0){
-                while($payment = mysql_fetch_assoc($results)){
-                        $transaction_number = $payment['pay_date'];
-                        $amount_paid = $payment['amount_paid'];
-                        $receipt_number = $payment['receipt_number'];
-                        $receipt_file = $payment['received_file']; ?>
-
-
-                        <tr>
-                        <td><?php echo $transaction_number; ?></td>
-                        <td><?php echo $amount_paid; ?></td>
-                        <td><?php echo $receipt_number; ?></td>
-                        <td><?php echo $receipt_file; ?></td>
-                </tr>
-
-
-        <?php        }
-
-        }
-        else {
-                echo mysql_error();
-        }
-
-?></table>
-</div>

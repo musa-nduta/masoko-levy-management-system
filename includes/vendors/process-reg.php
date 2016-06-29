@@ -7,6 +7,7 @@ $max = 9999;
 $idno = rand($min, $max);
 
 	$fname = $_POST['fname'];
+	$nat_id = $_POST['nat_id'];
 	$mname = $_POST['mname'];
 	$sname = $_POST['sname'];
 	$gender = $_POST['gender'];
@@ -29,21 +30,27 @@ $marketResult=mysql_query($sql);
 $marketRow=mysql_fetch_assoc($marketResult);
 
 
-$occupied = $marketRow['occupied'];
-$free = $marketRow['free'];
-$capacity = $marketRow['capacity'];
-$market_id = $marketRow['id'];
-$occupied = $occupied+1;
-$free = $capacity - $occupied;
-
-
-
-$cap_sql = "update market set occupied = '$occupied', free = '$free' where id = '$marketid'";
-
 
 
 /************ REGISTER NEW ENTREPRENEUR **********************/
 if(isset($_POST['register'])){
+    
+
+    //$occupied = $marketRow['occupied'];
+$capacity = $marketRow['capacity'];
+$market_id = $marketRow['id'];
+$reg_date = date("Y/m/d");
+
+
+
+$cap_sql = "update market set occupied = 
+            market.occupied+1, free = market.capacity-market.occupied where id = '$marketid'" or die(mysql_error());
+
+
+//    Updating the free and occupied fields in the market details
+    mysql_query($cap_sql);
+    
+    
 
 
 //Generating Slot Number from random numbers, and determining the capacity of the market and the remained slots
@@ -63,7 +70,9 @@ $slot = rand(1, $capacity);
 											email,
 											password,
 											market_id,
-											slot
+											slot,
+                                            reg_date,
+                                            nat_id
 										)
 								values(
 										'$fname',
@@ -79,26 +88,29 @@ $slot = rand(1, $capacity);
 										'$email',
 										'$password',
 										'$market_id',
-										'$slot'
-									    )";
+										'$slot',
+                                        '$reg_date',
+                                        '$nat_id'
+									    )" or die(mysql_error());
 if(mysql_query($query)){
-
-$insert = mysql_query($query);
-$capacity = mysql_query($cap_sql);
 ?>
-<div id="message"><?php
-	if( $insert && $capacity){
-	?><br><?php	echo "Thank you for getting registered.";
-	?><br><?php	echo "Your Username is: ".$id_number.".";
+
+<div id="message">
+    <br><?php	echo "Thank you for getting registered.";
+	?><br><?php	echo "Your Pin Code is: ".$id_number.".";
 	?><br><?php	//echo "You were allocated the market slot number: ".$slot.".";
 	?><br><?php echo "Please note the above details for future use.";
 	echo "You can login later after activation.";
-		}
+		?></div><?php
 
-			else {
+	}
+    else {
 				echo "Did Not Register, Try again.";
-			} ?>
-		</div><?php
+			} 
 
-	}}
+
+}
 ?>
+
+
+
