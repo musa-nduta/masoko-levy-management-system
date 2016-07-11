@@ -12,23 +12,6 @@
 
 
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3>
-            <strong>Gender Statistics</strong>
-        </h3>
-    </div>
-    
-  <div class="panel-body">
-        
-                  <?php require("includes/reports/vendors/gender.php"); ?>
-          
-  </div>
-</div>
-
-
-
-
 
 
 

@@ -6,14 +6,19 @@ $sql="SELECT fname, sname FROM entrepreneurs where id = '$id'";
 				$results=mysql_query($sql);
 
 
-    
 		$rows=mysql_fetch_assoc($results);
 		 			$fname = $rows['fname'];
 		  			$sname = $rows['sname']; 
 		
-	
+
+$ma_sup = mysql_query("SELECT fname, market.market_name, lname from market_admin, market where market_admin.market_id = market.id and market_admin.id = '$id'");
+ $name=mysql_fetch_assoc($ma_sup);
+		 			$admin_fname = $name['fname'];
+		  			$admin_lname = $name['lname']; 
+		  			$name['id']; 
 
 
+                  
 
 
 
@@ -58,7 +63,7 @@ if (isset($_SESSION['en'])){ //Check if the User Logging in is an entrepreneur ?
           <a href="#" 
              class="dropdown-toggle" 
              data-toggle="dropdown">
-                MARKET SUPERVISOR
+                <?php echo $admin_fname." ".$admin_lname." (".$name['market_name']." Market.)"; ?>
               <span class="glyphicon glyphicon-user pull-right"></span>
           </a>
         
@@ -84,6 +89,7 @@ if (isset($_SESSION['en'])){ //Check if the User Logging in is an entrepreneur ?
 
 <?php
 }elseif (isset($_SESSION['ad'])){ //Check if the User Logging in is an administrator ?>
+
     <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">ADMINISTRATOR<span class="glyphicon glyphicon-user pull-right"></span></a>

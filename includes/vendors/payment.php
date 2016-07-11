@@ -2,6 +2,21 @@
     //A function to check if a user is login, otherwise they will be directed to the login page.
     checklogin();
 
+$id = $_SESSION['id'];
+    
+    $sql="SELECT market_id FROM entrepreneurs where id = '$id'";
+    
+    //execute query
+    $results=mysql_query($sql);
+    
+    $rows=mysql_fetch_assoc($results);
+
+
+$market_id = $rows['market_id'];
+
+
+
+
     if (isset($_POST['pay'])) {
 
 
@@ -16,8 +31,8 @@
     $receipt_file =upload('receipt',"images/masoko/");
 
         $payment_query = "INSERT INTO payments
-                        (payer_id, pay_date, amount_paid, receipt_number, receipt_file, month_paid_for, year_paid_for)
-                        VALUES ('$payer_id','$pay_date', '$amount_paid', '$receipt_number',  '$receipt_file', $month_paid_for, $year_paid_for)";
+                        (payer_id, pay_date, amount_paid, receipt_number, receipt_file, payer_market_id)
+                        VALUES ('$payer_id','$pay_date', '$amount_paid', '$receipt_number',  '$receipt_file', $market_id)";
 
                 if(mysql_query($payment_query)){
                        header("Location: index.php?q=afterpay");
@@ -39,7 +54,7 @@ $get_payments = "SELECT payments.payer_id, entrepreneurs.id, payments.pay_date, 
 
 <div class="well">
   <div class="jumbotron">
-    <h1 style="font-weight: bolder;">Pay Here!</h1>
+    <h2 style="font-weight: bolder;">Pay Here!</h2>
     <p style="margin-left:20px; font-size: 2em;">Please be careful when filling the monthly payment form</p>
   </div>
 
@@ -55,7 +70,7 @@ $get_payments = "SELECT payments.payer_id, entrepreneurs.id, payments.pay_date, 
     <div class="form-group">
           <label class="col-md-4 control-label" for="receipt_number">Receipt Number</label>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="receipt_number" placeholder="Enter Receipt Number" data-validation="[NOTEMPTY]">
+            <input type="text" class="input-medium bfh-phone form-control input-md" name="receipt_number" placeholder="eg. BRFOQB030218401" data-format="ddddddddddddddd" required="required">
         </div>
     </div>
 
@@ -67,48 +82,7 @@ $get_payments = "SELECT payments.payer_id, entrepreneurs.id, payments.pay_date, 
         </div>
     </div>
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="receipt"></label>
-    </div>
-
-          <div class="form-group">
-                <label class="col-md-4 control-label" for="pay_month">Select month to pay for: </label>
-                <select class="col-md-6" name="pay_month">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                </select>
-          </div>
-
-
-          <div class="form-group">
-                <label class="col-md-4 control-label" for="pay_year">Year: </label>
-                <select class="col-md-6" name="pay_year">
-
-<!-- Generating number of years -->
-                  <?php $year=2016;
-                        while($year>=2016 && $year<=2100)
-                        {  ?>
-                    <option>
-                            <?php echo $year; ?>
-                    </option>
-
-                  <?php
-                          $year++;
-                  }?>
-
-                </select>
-          </div>
-<!-- End of Year generation -->
+   
 
 <div class="form-group">
       <label class="col-md-6 control-label" for="time">

@@ -9,6 +9,10 @@ switch($q){
 	case 'login':
 				$content="includes/login.php";
 				break;
+    
+    case 'supv_list':
+				$content="admin/list_admins.php";
+				break;
 
 	case 'register':
 				$content="includes/vendors/register.php";
@@ -21,6 +25,15 @@ switch($q){
 	case 'registerm':
 				$content="includes/markets/register_market.php";
 				break;
+    
+    case 'success-registerm':
+				$content="includes/markets/success_market_reg.php";
+				break; 
+    
+    case 'failure-registerm':
+				$content="includes/markets/failure_market_reg.php";
+				break;
+    
 
 	case 'proc-update-pdetails':
 				$content="includes/vendors/proc-update-pdetails.php";
@@ -29,6 +42,10 @@ switch($q){
 
 	case 'register-ma':
 				$content="admin/register_marketadmin.php";
+				break;
+    
+    case 'contact-admin':
+				$content="admin/contacts.php";
 				break;
 
 	case 'process-reg-ma':
@@ -168,10 +185,6 @@ switch($q){
     
         case 'monthly_pay':
 				$content="includes/reports/payments/payments_in_a_month.php";
-				break;
-        
-        case 'monthly_printable':
-				$content="includes/reports/payments/monthly_printable.php";
 				break;
 
 

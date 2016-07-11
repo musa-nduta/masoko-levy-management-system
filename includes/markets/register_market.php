@@ -36,31 +36,31 @@ if(isset($_POST['submit']))
 
   if(mysql_query($sql))
   {
-    echo "Record saved";
+    Header("Location: index.php?q=success-registerm");
   }else
     {
-	  echo "record not saved";
-          echo mysql_error();
-          echo $_POST['district'];
+	  Header("Location: index.php?q=failure-registerm");
 	}
 }
 ?>
 
+Add A New Market
 
-<form name="register_market" method="POST" action="" enctype="multipart/form-data">
- <table>
-     <th>
-	    Add A New Market
-	 </th>
-	 <tr>
-	    <td>Name</td>
-	    <td><input type='text' name="name"></td>
-	 </tr>
+<form name="register_market" class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+ 
+    <div class="form-group">
+  <label class="col-md-4 control-label" for="name">Market Name</label>
+  <div class="col-md-4">
+  <input id="textinput" name="name" type="text" class="form-control input-md" required="required">
 
-         <tr>
-           <td>District</td>
-           <td>
-                  <select name="district">
+  </div>
+</div>
+    
+    
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="name">District</label>
+  <div class="col-md-4">
+  <select name="district">
                                 <?php
                                         $district = "SELECT name FROM district";
 
@@ -73,28 +73,61 @@ if(isset($_POST['submit']))
                                         <?php  }
                                 } ?>
                  </select>
-           </td>
-        </tr>
 
-	 <tr>
-	    <td>Street</td>
-	    <td><input type='text' name='street'></td>
-	 </tr>
+  </div>
+</div>   
+    
+  
+        <div class="form-group">
+  <label class="col-md-4 control-label" for="street">Street</label>
+  <div class="col-md-4">
+  <input id="textinput" name="street" type="text" class="form-control input-md" required="required">
 
-	 <tr>
-	    <td>Capacity</td>
-	    <td><input type='text' name='capacity'></td>
-	 </tr>
-	 <tr>
-	    <td>Image</td>
-	    <td><input type='file' name='image'></td>
-	 </tr>
-	 <tr>
-	    <td>Description</td>
-	    <td><textarea name='description'></textarea></td>
-	 </tr>
-	 <tr>
-	    <td><input type='submit' name='submit' value='Add'></td>
-	 </tr>
- </table>
+  </div>
+</div>      
+
+    
+<div class="form-group">
+  <label class="col-md-4 control-label" for="capacity">Total Market Slots</label>
+  <div class="col-md-4">
+  <input id="textinput" name="capacity" type="text" class="form-control input-md" required="required">
+
+  </div>
+</div>
+    
+    
+<div class="form-group">
+ <label class="col-md-4 control-label">Select a market image</label>
+    <div class="col-md-4">
+       <input id="image" name="image" type="file" class="file">
+
+  </div>
+</div>
+
+ <div class="form-group">
+  <label class="col-md-4 control-label" for="name">Description</label>
+  <div class="col-md-4">
+      
+      <textarea class="form-control" name='description' rows="5" id="comment"></textarea>
+
+  </div>
+</div>
+
+  
+<div class="form-group">
+    <div class="col-md-offset-4">
+        <div class="col-md-2">
+            <input type="submit" name="submit" class="btn btn-default" value="Add Market">
+        </div>
+
+        <div class="col-md-2">
+            <input type="reset" class="btn btn-danger" name="reset" value="Reset Form">
+        </div>
+    </div>
+    </div>
+    
+    
+    
+    
+   
 </form>

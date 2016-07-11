@@ -6,6 +6,7 @@ if((isset($_SESSION['en'])) and (isset($_SESSION['id']))){?>
 	<li><a href="index.php?q=vendor-dashboard">DASHBOARD</a></li>
 	<li><a href="index.php?q=viewm">MARKETS</a></li>
 	<li><a href="index.php?q=news_disp">NEWS</a></li>
+    <li><a href="index.php?q=contact-admin">SUPPORT</a></li>
 </ul>
 
 <!--Right Nav Buttons -->
@@ -21,6 +22,7 @@ if((isset($_SESSION['en'])) and (isset($_SESSION['id']))){?>
 	<li><a href="index.php?q=viewm">MARKETS</a></li>
 	<li><a href="index.php?q=market_supervisor_dashboard">DASHBOARD</a></li>
 	<li><a href="index.php?q=news_disp">NEWS</a></li>
+    <li><a href="index.php?q=contact-admin">SUPPORT</a></li>
 </ul>
 
 <!--Right Nav Buttons -->
@@ -51,6 +53,7 @@ if((isset($_SESSION['en'])) and (isset($_SESSION['id']))){?>
     <li class="active"><a href="index.php"><div class="glyphicon glyphicon-home"></div></a></li>
 		<li><a href="index.php?q=viewm">MARKETS</a></li>
 		<li><a href="index.php?q=news_disp">NEWS</a></li>
+		<li><a href="index.php?q=contact-admin">SUPPORT</a></li>
 
 
 </ul>

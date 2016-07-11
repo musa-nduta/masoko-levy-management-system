@@ -1,37 +1,98 @@
 
 
-<form name='register_marketadmin' method='POST' action="index.php?q=process-reg-ma" enctype="multipart/form-data">
- <table>
-     <th>
-	    Register New Market Supervisor
-	 </th>
-	 <tr>
-	    <td>First Name</td>
-	    <td><input type='text' name='fname'></td>
-	 </tr>
-	    <td>Last Name</td>
-	    <td><input type='text' name='lname'></td>
-	 </tr>
-	 <tr>
-	    <td>Gender</td>
-	    <td>Male <input type='radio' name='gender' value='male'>
-	    Female <input type='radio' name='gender' value='female'></td>
-	 </tr>
-	 <tr>
-	    <td>Date Of Birth</td>
-	    <td><input type='text' name='dob'></td>
-	 </tr>
-	 <tr>
-	    <td>marital status</td>
-	    <td><input type='radio' name='mstatus' value='single'>Single
-	    <input type='radio' name='mstatus' value='Married'>Married</td>
-	 </tr>
+<h1><strong>Register New Market Supervisor</strong></h1>
+
+<form name='register_marketadmin' class="form-horizontal" method='POST' action="index.php?q=process-reg-ma" enctype="multipart/form-data">
 
 
-	 <tr>
-	    <td>Market</td>
-	    <td>
-			<select name="market" size="1">
+    
+<!-- password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="fname">First Name</label>
+  <div class="col-md-4">
+  <input type="text" name="fname" id="fname" class="form-control input-md" required="required">
+
+  </div>
+</div>
+    
+<!-- password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="username">Last Name</label>
+  <div class="col-md-4">
+  <input type="text" name="lname" id="lname" class="form-control input-md" required="required" >
+
+  </div>
+</div> 
+    
+  
+<!-- Multiple Radios -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="gender">Gender</label>
+  <div class="col-md-4">
+  <div class="radio">
+    <label for="radios-0">
+      <input type="radio" name="gender" id="gender" value="male" required>
+      Male
+    </label>
+	</div>
+  <div class="radio">
+    <label for="radios-1">
+      <input type="radio" name="gender" id="gender" value="female">
+      Female
+    </label>
+	</div>
+  </div>
+</div>
+
+    
+<!-- Date input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Date of Birth</label>
+  <div class="col-md-4">
+  <input id="dob" name="dob" type="date" class="form-control input-md" required="required" placeholder="mm/dd/YYYY" onblur="dobMachine()"><div id="age_error"></div>
+  </div>
+</div>
+    
+    
+    <!-- Marital status -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="radios">Marital Status</label>
+  <div class="col-md-4">
+  <div class="radio">
+    <label for="radios-0">
+      <input type="radio" name="mstatus" id="radios-0" value="single" required>
+      Single
+    </label>
+	</div>
+
+  <div class="radio">
+    <label for="radios-1">
+      <input type="radio" name="mstatus" id="radios-1" value="married">
+      Married
+    </label>
+	</div>
+
+      <div class="radio" >
+    <label for="radios-1">
+      <input type="radio" name="mstatus" id="radios-1" value="divorced">
+      Divorced
+    </label>
+	</div>
+
+      <div class="radio">
+    <label for="radios-1">
+      <input type="radio" name="mstatus" id="radios-1" value="not-prefer">
+      Not Prefer to say
+    </label>
+	</div>
+  </div>
+</div>
+    
+<!-- Market-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Market</label>
+  <div class="col-md-4">
+      <select name="market" size="1">
 	    		<?php
 
 	    		/*****************************ADMIN DETAILS ******************/
@@ -51,22 +112,43 @@
 
  		 ?>
  		 </select>
+  </div>
+</div>    
+    
 
 
+<!-- password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="username">Username</label>
+  <div class="col-md-4">
+  <input type="text" name="username" id="username" class="form-control input-md" required="required">
+
+  </div>
+</div>
 
 
-	    </td>
-	 </tr>
-	    <td>Username</td>
-	    <td><input type='text' name='username'></td>
-	 </tr>
-	    <td>Password</td>
-	    <td><input type='password' name='password'></td>
-	 </tr>
+<!-- Confirm password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="password">Password</label>
+  <div class="col-md-4">
+  <input type="password" name="password" id="password" class="form-control input-md" required="required" onkeyup="passMatch()">
 
-	 <tr>
-	    <td><input type='submit' name='submit' value='Register'></td>
-	    <td><input type='reset' name='reset' value='reset'></td>
-	 </tr>
- </table>
+  </div><div id="pass_error"></div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-offset-4">
+        <div class="col-md-2">
+            <input type="submit" name="submit" class="btn btn-default" value="Register">
+        </div>
+
+        <div class="col-md-2">
+            <input type="reset" class="btn btn-danger" name="reset" value="Reset">
+        </div>
+    </div>
+    </div> 
+    
+    
+    
+
 </form>

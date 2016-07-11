@@ -105,7 +105,7 @@ if(mysql_query($query)){
 
 	}
     else {
-				echo "Did Not Register, Try again.";
+				echo "Did Not Register, <a href='index.php?q=viewm'>Try again.</a>";
 			} 
 
 

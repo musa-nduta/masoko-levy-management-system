@@ -32,6 +32,7 @@
 		                  <h3 id="menu-header">Quick Links</h3>
 		                  <li><a href="index.php?q=registerm" >Add Market</a></li>
 		                  <li><a href="index.php?q=register-ma" >Add Market supervisor</a></li>
+		                  <li><a href="index.php?q=supv_list" >Market Supervisors</a></li>
 
 	                  </ul>';
 

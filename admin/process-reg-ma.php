@@ -25,12 +25,20 @@ if(isset($_POST['submit']))
   $sql="INSERT INTO market_admin(fname,lname,gender,dob,mstatus, market_id, username, password)
   			VALUES ('$fname','$lname','$gender','$dob','$mstatus', '$market_id', '$username','$password')";
   if(mysql_query($sql))
-  {
-   echo "Successfully registered";
-		}
+  { ?>
+   
+   <div class="alert alert-success">
+        <strong>Success!</strong> Successfully registered
+    </div>
 
-			else {
-				echo "Not Registered, Try again.";
-			}
+    
+<?php }
+
+			else { ?>
+            
+				<div class="alert alert-danger">
+                    <strong>There is a problem!</strong> Market supervisor could no be registered, please <a href="index.php?q=register-ma">try again</a>
+            </div>
+		<?php	}
 }
 ?>

@@ -9,8 +9,6 @@
         <tr>
                 <th>Payment Date</th>
                 <th>Amount Paid</th>
-                <th>For Month</th>
-                <th>For Year</th>
                 <th>Receipt number</th>
 <!--                <th>Receipt File</th>-->
         </tr>
@@ -22,8 +20,6 @@
     $payment_report = "SELECT payer_id, 
                               pay_date, 
                               amount_paid,
-                              month_paid_for,
-                              year_paid_for,
                               receipt_number, 
                               receipt_file
                         FROM payments
@@ -38,15 +34,12 @@
                         $amount_paid = $payment['amount_paid'];
                         $receipt_number = $payment['receipt_number'];
                         $receipt_file = $payment['receipt_file'];
-                        $month_paid_for = $payment['month_paid_for']; 
-                        $year_paid_for = $payment['year_paid_for']; ?>
+                         ?>
 
 
                         <tr>
                         <td><?php echo $transaction_number; ?></td>
                         <td><?php echo $amount_paid; ?></td>
-                        <td><?php echo $month_paid_for; ?></td>
-                        <td><?php echo $year_paid_for; ?></td>
                         <td><?php echo $receipt_number; ?></td>
                         
                             

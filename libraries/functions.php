@@ -52,7 +52,7 @@
                 //header("Location: index.php?q=login"); ?>
                 <script type="text/javascript">
                    window.location.assign("index.php?q=login");
-                  alert("Username and/or Password incorrect.\n\nTry again.");
+                  alert("Incorrect username/password or account not active, please Contact the system administrator.");
                 </script>
 
               <?php }}

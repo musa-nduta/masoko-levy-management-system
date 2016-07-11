@@ -1,7 +1,9 @@
 
 
 
-<?php if (isset($_POST['submitted'])) {
+<?php 
+
+if (isset($_POST['submitted'])) {
 
 		masoko_login($_POST['username'], $_POST['password']);
 
