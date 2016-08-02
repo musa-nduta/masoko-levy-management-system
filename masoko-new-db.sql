@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.0
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 10, 2016 at 04:19 PM
--- Server version: 10.1.6-MariaDB
--- PHP Version: 5.6.21
+-- Generation Time: Aug 02, 2016 at 09:16 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -96,23 +96,24 @@ CREATE TABLE `entrepreneurs` (
   `market_id` int(11) NOT NULL,
   `slot` int(50) NOT NULL,
   `paid` int(60) NOT NULL DEFAULT '0',
-  `flag` varchar(15) NOT NULL DEFAULT 'deactivated'
+  `flag` varchar(15) NOT NULL DEFAULT 'deactivated',
+  `reg_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Table for entrepreneurs';
 
 --
 -- Dumping data for table `entrepreneurs`
 --
 
-INSERT INTO `entrepreneurs` (`id`, `fname`, `mname`, `sname`, `gender`, `dob`, `mstatus`, `street`, `pobox`, `id_number`, `phone`, `email`, `password`, `market_id`, `slot`, `paid`, `flag`) VALUES
-(19779, 'MUSA', 'DEDE', 'NDUTA', 'Male', '02/05/1976', 'Single', 'Uhuru', '977885766969898', '5320', '123', 'nduta_msdjkjkdjkddjkdjusa@hotmail.com', 'eb7f9542101c6a94f27404fafc3efd53', 22, 1832, 7449, 'activated'),
-(19787, 'kjahfhweh', 'hhkjahhjh', 'hjkhjlkahjdh', 'male', '2016-05-09', 'single', 'nkuhungu', '87287452', '2884', '+255-', 'savedmoses@yahoo.com', 'eb7f9542101c6a94f27404fafc3efd53', 24, 1828, 0, 'deactivated'),
-(19788, 'kjahfhweh', 'hhkjahhjh', 'hjkhjlkahjdh', 'male', '2016-05-09', 'single', 'nkuhungu', '87287452', '7655', '+255-(783) 737 892', 'savedmoses@yahoo.com', 'eb7f9542101c6a94f27404fafc3efd53', 24, 664, 0, 'deactivated'),
-(19789, 'kjahfhwehj', 'hhkja', 'hjkhjlkahjdh', 'male', '2016-05-09', 'single', 'nkuhungu', '87287452', '6112', '+255-(783) 737 892', 'savedmoses@yahoo.com', 'f973f609428ddc917e6784ad04be21fd', 24, 1467, 0, 'deactivated'),
-(19790, 'kjahfhwehj', 'hhkja', 'hjkhjlkahjdh', 'male', '2016-05-09', 'single', 'nkuhungu', '87287452', '6112', '+255-(783) 737 892', 'savedmoses@yahoo.com', 'f973f609428ddc917e6784ad04be21fd', 24, 1467, 0, 'deactivated'),
-(19791, 'KLEMMIE', 'M', 'MAJAMBA', 'female', '1990-05-23', 'single', 'area D', '2736, Dodoma', '8352', '+255-(764) 464 746', 'ghadjadhkhk@yahoo.com', '7115940ff4e9c96e15c3b658bd14db52', 22, 2281, 0, 'deactivated'),
-(19792, 'KLEMMIE', 'M', 'MAJAMBA', 'female', '1990-05-23', 'single', 'area c', '2736, Dodoma', '8352', '+255-(764) 464 746', 'ghadjadhkhk@yahoo.com', '7115940ff4e9c96e15c3b658bd14db52', 22, 2281, 0, 'activated'),
-(19795, 'kjgjkg', 'jhoafhuhoauewua', 'hhalhdah', 'female', '1990-02-03', 'married', 'kjljkjcahda', '7661783, dodoma', '4595', '+255-(988) 839 483', 'kljkadakjd@gmail.com', '17ca5df3e030d9ecf1f5fd493e35b783', 24, 1732, 0, 'deactivated'),
-(19796, 'kjgjkg', 'jhoafhuhoauewua', 'hhalhdah', 'female', '1990-02-03', 'married', 'kjljkjcahda', '7661783, dodoma', '4595', '+255-(988) 839 483', 'kljkadakjd@gmail.com', '17ca5df3e030d9ecf1f5fd493e35b783', 24, 1732, 0, 'deactivated');
+INSERT INTO `entrepreneurs` (`id`, `fname`, `mname`, `sname`, `gender`, `dob`, `mstatus`, `street`, `pobox`, `id_number`, `phone`, `email`, `password`, `market_id`, `slot`, `paid`, `flag`, `reg_date`) VALUES
+(19779, 'MUSA', 'DEDE', 'NDUTA', 'Male', '02/05/1976', 'married', 'Uhuru', '', '5320', '+255-(887) 782 772', 'nduta_msdjkjkdjkddjkdjusa@hotmail.com', 'e0bb9f757d0a6e252ffb148699aeb184', 22, 1832, 7449, 'activated', '2016-05-11'),
+(19787, 'kjahfhweh', 'hhkjahhjh', 'hjkhjlkahjdh', 'male', '2016-05-09', 'single', 'nkuhungu', '87287452', '2884', '+255-', 'savedmoses@yahoo.com', 'eb7f9542101c6a94f27404fafc3efd53', 24, 1828, 0, 'deactivated', '2016-05-11'),
+(19788, 'kjahfhweh', 'hhkjahhjh', 'hjkhjlkahjdh', 'male', '2016-05-09', 'single', 'nkuhungu', '87287452', '7655', '+255-(783) 737 892', 'savedmoses@yahoo.com', 'eb7f9542101c6a94f27404fafc3efd53', 24, 664, 0, 'deactivated', '2016-05-11'),
+(19789, 'kjahfhwehj', 'hhkja', 'hjkhjlkahjdh', 'male', '2016-05-09', 'single', 'nkuhungu', '87287452', '6112', '+255-(783) 737 892', 'savedmoses@yahoo.com', 'f973f609428ddc917e6784ad04be21fd', 24, 1467, 0, 'deactivated', '2016-05-11'),
+(19790, 'kjahfhwehj', 'hhkja', 'hjkhjlkahjdh', 'male', '2016-05-09', 'single', 'nkuhungu', '87287452', '6112', '+255-(783) 737 892', 'savedmoses@yahoo.com', 'f973f609428ddc917e6784ad04be21fd', 24, 1467, 0, 'deactivated', '2016-05-11'),
+(19791, 'KLEMMIE', 'M', 'MAJAMBA', 'female', '1990-05-23', 'single', 'area D', '2736, Dodoma', '8352', '+255-(764) 464 746', 'ghadjadhkhk@yahoo.com', '7115940ff4e9c96e15c3b658bd14db52', 22, 2281, 0, 'activated', '2016-05-11'),
+(19792, 'KLEMMIE', 'M', 'MAJAMBA', 'female', '1990-05-23', 'single', 'area c', '2736, Dodoma', '8352', '+255-(764) 464 746', 'ghadjadhkhk@yahoo.com', '7115940ff4e9c96e15c3b658bd14db52', 22, 2281, 0, 'activated', '2016-05-11'),
+(19795, 'kjgjkg', 'jhoafhuhoauewua', 'hhalhdah', 'female', '1990-02-03', 'married', 'kjljkjcahda', '7661783, dodoma', '4595', '+255-(988) 839 483', 'kljkadakjd@gmail.com', '17ca5df3e030d9ecf1f5fd493e35b783', 24, 1732, 0, 'deactivated', '2016-05-11'),
+(19796, 'kjgjkg', 'jhoafhuhoauewua', 'hhalhdah', 'female', '1990-02-03', 'married', 'kjljkjcahda', '7661783, dodoma', '4595', '+255-(988) 839 483', 'kljkadakjd@gmail.com', '17ca5df3e030d9ecf1f5fd493e35b783', 24, 1732, 0, 'deactivated', '2016-05-11');
 
 -- --------------------------------------------------------
 
@@ -137,7 +138,7 @@ CREATE TABLE `market` (
 --
 
 INSERT INTO `market` (`id`, `market_name`, `street`, `description`, `image`, `capacity`, `occupied`, `free`, `district_id`) VALUES
-(22, 'Mchikichini', 'Karume', 'Hapa ni Mchikichini.', '1503393823.jpeg', 3000, 20, 2980, 1),
+(22, 'Mchikichini', 'Karume', 'Hapa ni Mchikichini.', '1503393823.jpeg', 3000, 3, 2997, 1),
 (24, 'Soko kuu', 'Soko kuu', 'Soko kuu arusha.', '1302205275.jpeg', 2300, 6, 2294, 3),
 (28, 'Majengo', 'Majengo', 'Ni town Utapata hela sana', '387965813.png', 3000, 0, 3000, 5);
 
@@ -220,8 +221,16 @@ CREATE TABLE `payments` (
   `pay_date` varchar(15) NOT NULL,
   `amount_paid` int(50) NOT NULL,
   `receipt_number` varchar(50) NOT NULL,
-  `receipt_file` varchar(50) NOT NULL
+  `receipt_file` varchar(50) NOT NULL,
+  `payer_market_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`id`, `payer_id`, `pay_date`, `amount_paid`, `receipt_number`, `receipt_file`, `payer_market_id`) VALUES
+(1, 19779, '2016-08-01', 6000, '674675555866675', '', 22);
 
 -- --------------------------------------------------------
 
@@ -301,7 +310,8 @@ ALTER TABLE `news`
 --
 ALTER TABLE `payments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `payer_id` (`payer_id`);
+  ADD KEY `payer_id` (`payer_id`),
+  ADD KEY `payer_market_id` (`payer_market_id`);
 
 --
 -- Indexes for table `users`
@@ -352,7 +362,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -396,7 +406,8 @@ ALTER TABLE `messages`
 -- Constraints for table `payments`
 --
 ALTER TABLE `payments`
-  ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`payer_id`) REFERENCES `entrepreneurs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`payer_id`) REFERENCES `entrepreneurs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `payments_ibfk_2` FOREIGN KEY (`payer_market_id`) REFERENCES `market` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
