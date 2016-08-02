@@ -18,7 +18,7 @@ cursor:pointer;
 <?php
 
 
-mysql_connect("localhost","root","root");
+mysql_connect("localhost","root","");
 mysql_select_db("masoko");
 
 $sql="SELECT id, market_name, district_id, street FROM market";

@@ -3,7 +3,7 @@
 //checklogin();
 
 
-mysql_connect("localhost","root","root");
+mysql_connect("localhost","root","");
 mysql_select_db("masoko");
 
 foreach($_POST['activation'] as $item){

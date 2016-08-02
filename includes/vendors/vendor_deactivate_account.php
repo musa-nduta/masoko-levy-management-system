@@ -1,7 +1,7 @@
 <?php
 
 checklogin();
-mysql_connect("localhost","root","root");
+mysql_connect("localhost","root","");
 mysql_select_db("masoko");
 
 $id = $_SESSION['id'];

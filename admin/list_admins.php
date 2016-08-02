@@ -4,7 +4,7 @@
 
 if(mysql_num_rows($admins_selector)>0){
     while($rows = mysql_fetch_assoc($admins_selector)){
-        echo $rows['fname'];
+        echo $rows['fname']."<p>*******************************";
     }
 }else 
     echo "Error in query";

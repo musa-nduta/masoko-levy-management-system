@@ -8,7 +8,7 @@ date_default_timezone_set("Africa/Dar_es_salaam");
 
 
 //Database connections and database selections, Kumbuka kubadili password/username
-$con = mysql_connect("localhost", "root", "root");	
+$con = mysql_connect("localhost", "root", "");	
 mysql_select_db("masoko", $con);
 
 ?>
@@ -75,7 +75,7 @@ $date = date("Y-m-d");
      $name_row=mysql_fetch_assoc($market_name_query);
      
         
-    
+   echo $rows['market_id']; 
 
 //
 //$payment_report = mysql_query("SELECT SUM(amount_paid) as total from payments WHERE pay_date BETWEEN '$from' and '$to'") or die(mysql_error());
@@ -86,8 +86,6 @@ $date = date("Y-m-d");
   
    //$date = date("Y-m-d");
     
-    $from = $_POST['date_from'];
-    $to = $_POST['date_to'];
 
 $payment_report = mysql_query("SELECT COALESCE(SUM(amount_paid),0) as total from payments WHERE pay_date BETWEEN '$from' and '$to' and payer_market_id = '".$rows['market_id']."'" ) or die(mysql_error());
 

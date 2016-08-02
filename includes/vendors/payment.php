@@ -25,8 +25,6 @@ $market_id = $rows['market_id'];
     $payer_id = $_SESSION['id'];
     $pay_date = date("Y-m-d");
     $amount_paid = $_POST['amount'];
-    $month_paid_for = $_POST['pay_month'];
-    $year_paid_for = $_POST['pay_year'];
     $receipt_number = $_POST['receipt_number'];
     $receipt_file =upload('receipt',"images/masoko/");
 

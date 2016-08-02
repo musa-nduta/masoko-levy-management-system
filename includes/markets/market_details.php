@@ -1,10 +1,21 @@
 <?php
 
 $marketid=$_GET['id'];
+
+$no_of_vendors = mysql_query("SELECT COUNT(market_id) as vendors from entrepreneurs WHERE market_id='$marketid'");
+$vendors = mysql_fetch_assoc($no_of_vendors);
+$vend = (int)$vendors['vendors'];
+
+
 $sql="SELECT * FROM market WHERE id='$marketid'";
 $marketResult=mysql_query($sql);
 $marketRow=mysql_fetch_assoc($marketResult);
 $_SESSION['market'] = $marketid;
+$occupied =$vend;
+$free = (int)$marketRow['capacity']-$occupied;
+
+mysql_query("update market set occupied='$vend', occupied = '$occupied', free='$free' where id='$marketid'");
+
 
 
 
@@ -56,12 +67,12 @@ $_SESSION['market'] = $marketid;
 
 <tr>
 <td width="150px">Occupied</td>
-<td width="150px"><?php echo $marketRow['occupied'];?></td>
+<td width="150px"><?php echo $occupied;?></td>
 </tr>
 
 <tr>
 <td width="150px">Free</td>
-<td width="150px"><?php echo $marketRow['free'];?></td>
+<td width="150px"><?php echo $free;?></td>
 </tr>
 
 

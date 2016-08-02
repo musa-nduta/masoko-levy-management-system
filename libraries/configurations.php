@@ -1,13 +1,13 @@
 <?php
 //show errors.
-ini_set('display_errors', 'off');
+ini_set('display_errors', 'on');
 
 session_start();//Start a PHP session
 
 ob_start();
 
 //Database connections and database selections
-$con = mysql_connect("localhost", "root", "root");	
+$con = mysql_connect("localhost", "root", "");	
 mysql_select_db("masoko", $con);
 
 

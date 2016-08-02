@@ -15,7 +15,7 @@ $ma_sup = mysql_query("SELECT fname, market.market_name, lname from market_admin
  $name=mysql_fetch_assoc($ma_sup);
 		 			$admin_fname = $name['fname'];
 		  			$admin_lname = $name['lname']; 
-		  			$name['id']; 
+		  			//$name['id']; //Uncomment if something goes wrong.
 
 
                   
